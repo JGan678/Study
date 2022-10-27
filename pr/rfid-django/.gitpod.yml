@@ -1,0 +1,8 @@
+image: gitpod/workspace-mysql
+tasks:
+  - init: pip install django mysqlclient
+  - init: |
+      mysql -e "CREATE DATABASE rfid;\
+      CREATE USER 'rfid'@'localhost' IDENTIFIED BY 'rfid';\
+      GRANT all ON rfid.* TO 'rfid'@'localhost';"
+  - init: python manage.py makemigrations
